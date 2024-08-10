@@ -1,23 +1,25 @@
 import jwt from "jsonwebtoken";
 
 import { AppError } from "../error";
-import { CustomerRepository } from "../repositories/CustomerRepository";
+import { CustomersRepository } from "../repositories/CustomersRepository";
 
 export class AuthCustomerScriptUseCase {
-  constructor(private customersRepository: CustomerRepository) {}
-  async execute(id: string): Promise<{
-    token: string;
-  }> {
+  constructor(private customersRepository: CustomersRepository) {}
+  async execute(id: string): Promise<string> {
     const customer = await this.customersRepository.findById(id);
 
     if (!customer) {
-      throw new AppError("Customer not Exists", 404);
+      throw new AppError("Customer Not Exists", 404);
     }
 
-    const token = jwt.sign({}, process.env.SIGNED_WORD!, { expiresIn: "1h" });
+    const token = jwt.sign(
+      {
+        id,
+      },
+      process.env.JWT_SECRET_KEY!,
+      { expiresIn: "1h" }
+    );
 
-    return {
-      token,
-    };
+    return token;
   }
 }

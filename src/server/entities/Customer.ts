@@ -15,6 +15,7 @@ export const CustomerSchema = z.object({
 export interface Customer extends z.infer<typeof CustomerSchema> {
   id: string;
   // leads: Lead[];
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

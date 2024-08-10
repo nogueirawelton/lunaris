@@ -1,5 +1,5 @@
 import { Customer } from "../entities/Customer";
-import { CustomerRepository } from "../repositories/CustomerRepository";
+import { CustomersRepository } from "../repositories/CustomersRepository";
 import { AppError } from "../error";
 
 interface Request {
@@ -9,7 +9,7 @@ interface Request {
 }
 
 export class CreateCustomerUseCase {
-  constructor(private customersRepository: CustomerRepository) {}
+  constructor(private customersRepository: CustomersRepository) {}
   async execute({ name, email, phone }: Request): Promise<Customer> {
     const customerAlreadyExists = await this.customersRepository.findByEmail(
       email

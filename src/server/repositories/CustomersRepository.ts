@@ -7,7 +7,7 @@ interface CreateCustomerDTO {
   phone: string;
 }
 
-export class CustomerRepository {
+export class CustomersRepository {
   async create(data: CreateCustomerDTO): Promise<Customer> {
     return await prisma.customer.create({
       data,

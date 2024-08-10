@@ -22,7 +22,7 @@ export default function RootLayout({
         <Script
           src="./script.js"
           strategy="beforeInteractive"
-          clientId="07c4bde2-9c91-4cec-a5fb-3c0bdd04ec7d"
+          clientId="b4fdda9b-f748-4757-9329-0ac64ed51bef"
         />
       </body>
     </html>

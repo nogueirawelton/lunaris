@@ -1,7 +1,7 @@
-import { CustomerRepository } from "@/server/repositories/CustomerRepository";
+import { CustomersRepository } from "@/server/repositories/CustomersRepository";
 import { CustomerProfileUseCase } from "@/server/useCases/CustomerProfileUseCase";
 
-const customersRepository = new CustomerRepository();
+const customersRepository = new CustomersRepository();
 const getCustomerUseCase = new CustomerProfileUseCase(customersRepository);
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {

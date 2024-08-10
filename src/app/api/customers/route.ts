@@ -1,9 +1,9 @@
-import { CustomerRepository } from "../../../server/repositories/CustomerRepository";
+import { CustomersRepository } from "../../../server/repositories/CustomersRepository";
 import { CreateCustomerUseCase } from "../../../server/useCases/CreateCustomerUseCase";
 import { CustomerSchema } from "../../../server/entities/Customer";
 import { ZodError } from "zod";
 
-const customersRepository = new CustomerRepository();
+const customersRepository = new CustomersRepository();
 const createCustomerUseCase = new CreateCustomerUseCase(customersRepository);
 
 export async function POST(request: Request) {
